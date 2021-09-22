@@ -1,0 +1,294 @@
+section {
+    padding-bottom: 80px;
+    position: relative;
+    z-index: 1;
+}
+.hero-section {
+    .hero-preview {
+        background-size: cover;
+        padding-bottom: 50%;
+        height: 100%;
+        background-position: center;
+    }
+    .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .left-section-wrap {
+        margin-right: 18%;
+    }
+    .hero-title-block {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        .hero-title {
+            font-size: 24px;
+            margin-bottom: 35px;
+        }
+    }
+    .participant-container {
+        margin-bottom: 50px;
+    }
+    .participant-item {
+        margin-bottom: 20px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .participant-name {
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+    }
+}
+
+.colors-section {
+    .h2 {
+        margin-bottom: 20px;
+    }
+    .row {
+        --bs-gutter-y: 20px;
+    }
+    .section-title {
+        font-size: 14px;
+    }
+    .color-card {
+        background: linear-gradient(183.19deg, #000000 2.64%, rgba(0, 0, 0, 0) 97.36%);
+        .header-card {
+            padding: 11px 30px;
+            font-weight: 600;
+        }
+        .body-card {
+            border-left-style: solid;
+            border-right-style: solid;
+            border-left-width: 1px;
+            border-right-width: 1px;
+            border-image: linear-gradient(to bottom, #fff, rgba(0, 0, 0, 0)) 1 100%;
+            padding: 20px 30px;
+            .color-type {
+                font-weight: 300;
+                color: #BABABA;
+                margin-bottom: 5px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+.recommendation-section {
+    .h2 {
+        margin-bottom: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+    .row {
+        --bs-gutter-y: 20px;
+    }
+}
+.mobile-padding-section {
+    a {
+        text-decoration: none;
+    }
+}
+.recommend-card {
+    height: 100%;
+    position: relative;
+    &:hover {
+        .hidden-content {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    .image {
+        padding-bottom: 47%;
+        background-size: cover;
+        background-position: center;
+    }
+    .card-body {
+        padding: 18px;
+    }
+    .title {
+        margin-bottom: 15px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .hidden-content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-size: cover;
+        background-position: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+    }
+}
+
+
+@media (min-width: 576px) {
+    .hero-section {
+        .mobile {
+            display: none;
+        }
+    }
+    .recommendation-section {
+        .mobile-padding {
+            display: none;
+        }
+    }
+    
+}
+
+@media (max-width: 991px) {
+    section {
+        padding-bottom: 60px;
+    }
+    .hero-section {
+        .left-section-wrap {
+            margin-right: 0;
+        }
+        .hero-title-block {
+            margin-bottom: 30px;
+            .hero-title {
+                margin-bottom: 25px;
+                display: block;
+            }
+        }
+        .participant-container {
+            margin-bottom: 30px;
+        }
+    }
+    .colors-section {
+        .row {
+            --bs-gutter-x: 10px;
+        }
+        .color-card {
+            .header-card {
+                padding: 11px 20px;
+            }
+            .body-card {
+                padding: 20px;
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    section {
+        padding-bottom: 40px;
+    }
+    .hero-section {
+        .hero-image-wrap {
+            height: 100%;
+            display: block;
+            margin-right: -40px;
+        }
+        .hero-preview {
+            margin-right: -40px;
+        }
+    }
+}
+
+
+@media (max-width: 575px) {
+    section {
+        padding: 35px 0;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            right: -15px;
+            bottom: 0;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-top-width: 0;
+            border-top-style: none;
+            // border-bottom: 1px solid #fff;
+        }
+        &:first-child {
+            padding-top: 0;
+        }
+        &:nth-child(even) {
+            
+            &::after {
+                border-image: linear-gradient(to right, #fff, rgba(0, 0, 0, 0)) 100% 1;
+            }
+        }
+        &:nth-child(odd) {
+            
+            &::after {
+                border-image: linear-gradient(to left, #fff, rgba(0, 0, 0, 0)) 100% 1;
+            }
+        }
+    }
+    .hero-section {
+        .hero-title-block {
+            margin-top: 0;
+            margin-bottom: 20px;
+            .hero-title {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+            p {
+                font-size: 10px;
+            }
+        }
+        .hero-image-wrap {
+
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+        .hero-image {
+            min-height: 185px;
+        }
+        .hero-preview {
+            padding-bottom: 64%;
+        }
+        .participant-container {
+            margin-bottom: 0;
+        }
+        .desctop {
+            display: none;
+        }
+    }
+    .colors-section {
+        .color-card {
+            .header-card {
+                padding: 9px 13px;
+            }
+            .body-card {
+                padding: 20px 13px;
+                .color-type {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+    .recommendation-section {
+        
+        .h2 {
+            margin-bottom: 30px;
+        }
+        .row {
+            display: none;
+        }
+        .mobile-padding {
+            margin-right: -15px;
+        }
+        .recommend-card {
+            .image {
+                padding-bottom: 60%;
+            }
+            .title {
+                font-size: 14px;
+            }
+            .card-body {
+                padding: 20px 13px;
+            }
+        }
+    }
+}

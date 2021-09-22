@@ -1,0 +1,10 @@
+<section class="colors-section">
+    <div class="h2 section-title">{{'Цвета'|_}}</div>
+    <div class="row">
+        {% for color_item in colors_data %}
+        <div class="col-md-3 col-6 color-col">
+            {% partial 'portfolio/color-card' color_item=color_item %}
+        </div>
+        {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,17 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+
+    name:
+        label: Название проекта
+        searchable: true
+        sortable: true
+
+    slug:
+        label: Slug
+        searchable: true

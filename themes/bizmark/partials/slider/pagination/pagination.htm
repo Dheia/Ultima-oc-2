@@ -1,0 +1,7 @@
+<ul class="slider-pagination">
+    {% for i in 1..slide_count %}
+    <li class="pagination-item">
+        <button data-slide="{{ i - 1 }}">{{ i }}</button>
+    </li>
+    {% endfor %}
+</ul>

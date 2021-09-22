@@ -1,0 +1,13 @@
+<div class="color-card">
+    <div class="header-card" style="color: {{ color_item.font_color }}; background: {% if color_item.startHex and color_item.endHex %}linear-gradient(90deg, {{ color_item.startHex }} 0%, {{ color_item.endHex }} 100%) {% else %}{{ color_item.startHex }}{% endif %};">
+        {{ color_item.startHex }}
+        {% if color_item.endHex %}
+        -
+        {{ color_item.startHex }}
+        {% endif %}
+    </div>
+    <div class="body-card">
+        <div class="color-type">{{ color_item.rgb }}</div>
+        <div class="color-type">{{ color_item.cmyk }}</div>
+    </div>
+</div>

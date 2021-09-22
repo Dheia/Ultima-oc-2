@@ -1,0 +1,7 @@
+{% if obOffer.old_price_with_tax_value > obOffer.price_with_tax_value %}
+    <span class="price price-old">{{ obOffer.old_price_with_tax }} {{ obOffer.currency }}</span>
+    <span class="price price-new">{{ obOffer.price_with_tax }} {{ obOffer.currency }}</span>
+{% else %}
+    <span class="price">{{ obOffer.price_with_tax }} {{ obOffer.currency }}</span>
+{% endif %}
+<input type="hidden" name="offer_id" value="{{ obOffer.id }}"/>

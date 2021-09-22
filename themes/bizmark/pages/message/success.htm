@@ -1,0 +1,34 @@
+url = "/success"
+layout = "default"
+title = "Спасибо за заявку!"
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/success.css', 'themes/bizmark/assets');
+}
+?>
+==
+
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+
+{% put header_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+
+
+<section class="success">
+    <div class="success-wrap">
+        <div class="top-message">
+            <span class="success-title title">Спасибо за заявку!</span>
+            <span class="success-subtitle">Мы свяжемся с вами в указанное время</span>
+        </div>
+        <div class="bottom-message">
+            <span class="title">Получи приятный бонус, заполнив бриф:</span>
+            <a class="btn button-border brief-link" href="#">Заполнить бриф</a>
+            <a href="/">Вернуться на главную</a>
+        </div>
+    </div>
+</section>
+{% partial 'element/back-button/back-button' %}

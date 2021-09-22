@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Проекта
+
+# Model Form Field configuration
+form: $/bizmark/ultima/models/portfolio/fields.yaml
+
+# Model Class name
+modelClass: Bizmark\Ultima\Models\Portfolio
+
+# Default redirect location
+defaultRedirect: bizmark/ultima/portfolios
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: bizmark/ultima/portfolios/update/:id
+    redirectClose: bizmark/ultima/portfolios
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: bizmark/ultima/portfolios
+    redirectClose: bizmark/ultima/portfolios
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

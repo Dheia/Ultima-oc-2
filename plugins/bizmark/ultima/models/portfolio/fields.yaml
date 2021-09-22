@@ -1,0 +1,165 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    name:
+        label: Название проекта
+        span: auto
+
+    slug:
+        label: Slug (заполняется автоматически)
+        span: auto
+        preset:
+            field: name
+            type: slug
+
+    preview_description:
+        label: Описание на превью
+        span: full
+        type: textarea
+
+    preview_image:
+        label: Изображение на превью
+        span: full
+        type: fileupload
+
+    blocks:
+        label: Блоки на странице
+        span: full
+        type: repeater
+        prompt: Добавить блок
+        groups:
+            hero:
+                name: Первый экран
+                description: Блок с изображнием и описанием
+                icon: icon-desktop
+                fields:
+                    title:
+                        label: Заголовок первого экрана
+                        span: full
+                    description:
+                        label: Описание первого экрана
+                        span: full
+                        type: textarea
+                    additional_title:
+                        label: Дополнительный заголовок первого экрана
+                        span: full
+                    additional_description:
+                        label: Дополнительное описание первого экрана
+                        span: full
+                        type: richeditor
+                    hero_image:
+                        label: Изображение
+                        span: full
+                        type: mediafinder
+
+            colors:
+                name: Цвета
+                description: Блок с выбором цветов
+                icon: icon-paint-brush
+                fields:
+                    list:
+                        label: Список задействованных цветов
+                        type: repeater
+                        span: full
+                        prompt: Добавить цвет
+                        form:
+                            fields:
+                                hex:
+                                    label: Цвет в HEX формате
+                                    span: left
+                                    placeholder: 'e.g. #E573FF'
+                                hex_color:
+                                    label: Цвет надписи в HEX формате
+                                    span: right
+                                    type: colorpicker
+                                rgb:
+                                    label: Цвет в RGB формате
+                                    span: left
+                                    placeholder: 'e.g. R224 G148 B105 '
+                                cmyk:
+                                    label: Цвет в CMYK формате
+                                    span: left
+                                    placeholder: 'e.g. C0 M34 Y53 K12'
+
+            identity:
+                name: Айдентика
+                description: Слайдер с текстом справа
+                icon: icon-picture-o
+                fields:
+                    title:
+                        label: Заголовок
+                        span: full
+                    description:
+                        label: Описание
+                        span: full
+                        type: textarea
+                    slider:
+                        label: Слайдер с демонстрацией айдентики
+                        span: full
+                        type: repeater
+                        prompt: Добавить слайд
+                        form:
+                            fields:
+                                identity_images:
+                                    label: Изображение для слайда
+                                    span: full
+                                    type: mediafinder
+
+            fonts:
+                name: Шрифты
+                description: Блок с выбором шрифтов
+                icon: icon-font
+                fields:
+                    list:
+                        label: Список задействованных шрифтов
+                        type: repeater
+                        span: full
+                        prompt: Добавить шрифт
+                        form:
+                            fields:
+                                family:
+                                    label: Название семейства шрифтов
+                                    span: full
+#                                link:
+#                                    label: Ссылка на подключение шрифта
+#                                    span: right
+                                subfamily:
+                                    label: Подсемейства
+                                    span: full
+                                    type: repeater
+                                    prompt: Добавить подсемейство
+                                    form:
+                                        fields:
+                                            name:
+                                                label: Название подсемейства
+                                                span: left
+                                            value:
+                                                label: Вес (жирность)
+                                                span: right
+
+            website:
+                name: Слайдер с демонстрацией
+                description: Слайдер с текстом слева
+                icon: icon-laptop
+                fields:
+                    title:
+                        label: Заголовок
+                        span: full
+                    description:
+                        label: Описание
+                        span: full
+                        type: textarea
+                    slider:
+                        label: Слайдер с демонстрацией
+                        span: full
+                        type: repeater
+                        prompt: Добавить слайд
+                        form:
+                            fields:
+                                website_images:
+                                    label: Изображение для слайда
+                                    span: full
+                                    type: mediafinder

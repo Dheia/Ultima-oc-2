@@ -1,0 +1,165 @@
+url = "/cart"
+layout = "default"
+title = "Корзина товаров"
+
+[Cart]
+
+[MakeOrder]
+mode = "ajax"
+flash_on = 1
+redirect_on = 1
+redirect_page = "message/success"
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/cart.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/cart.js', 'themes/bizmark/assets');
+}
+function onInit(){
+    $this['obCart'] = $this->Cart->get();
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+
+
+{% put listing_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+{% put header_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+
+{% put footer %}
+    {% partial 'footer/footer' %}
+{% endput %}
+
+
+{% put page_modals %}
+    {% partial 'modal/order' %}
+{% endput %}
+
+{% put main_class %}
+    window-height
+{% endput %}
+
+
+{% set cart_data = [] %}
+
+{% for obCartPosition in obCart %}
+    {% set obOffer = obCartPosition.offer %}
+    {% set obProduct = obOffer.product %}
+    {% set sColor = obProduct.property.getByCode('color').property_value.getValueString() %}
+
+    {% set cart_data = cart_data|merge([{
+        id: obCartPosition.id,
+        name: obProduct.name,
+        description: obProduct.preview_text,
+        color: sColor,
+        size: obOffer.name,
+        price: obOffer.price,
+        count: obCartPosition.quantity,
+        imageSrc: obProduct.preview_image.path
+    }]) %}
+{% endfor %}
+
+
+{% set sum = 0 %}
+{% for item in cart_data %}
+    {% set sum = sum + (item.price * item.count) %}
+{% endfor %}
+
+
+<section class="cart-section">
+    <div class="card-content">
+        <div class="row">
+            <div class="col-xl-3 d-none d-xl-block">
+                <div class="left-section">
+                    <div class="layout-name">
+                        <object width="33px" height="42px" class="logo-star" type="image/svg+xml" data="{{ 'assets/img/svg/logo-star.svg'|theme }}"></object>
+                        <h1 class="h2">Корзина товаров:</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9">
+                <div class="right-section">
+                    <div class="cart" {% if cart_data|length != 0 %}style="display: block"{% else %}style="display: none"{% endif %}>
+                        <div class="products-container">
+                            {% for item in cart_data %}
+                            <div class="product-item collapse show" data-price-one-product="{{ item.price }}">
+                                <div class="collapse-wrapper">
+                                    <div class="product-item-wrap">
+                                        <div class="product-img-wrap">
+                                            <div class="product-img" style="background-image: url({{ item.imageSrc }});"></div>
+                                        </div>
+                                        <div class="product-description">{{ item.description|raw }}</div>
+                                        <div class="product-params">
+                                            <div>{{ item.name }}</div>
+                                            <div>Цвет: <span style="position:relative;top:1px;background-color:{{ item.color }};width:10px;height:10px;border-radius:50%"></span></div>
+                                            <div>Размер: {{ item.size }}</div>
+                                            <input type="hidden" name="product_name" value="{{ item.name }}">
+                                            <input type="hidden" name="product_color" value="{{ item.color }}">
+                                            <input type="hidden" name="product_size" value="{{ item.size }}">
+                                        </div>
+                                        <div class="product-counter-container">
+                                            <div class="product-counter-wrap button-border">
+                                                <button class="decrement"></button>
+                                                <div class="product-counter"> <span class="output-counter">{{ item.count }}</span> шт.</div>
+                                                <input class="counter" name="product_counter" type="hidden" data-position="{{ item.id }}" value="{{ item.count }}">
+                                                <button class="increment"></button>
+                                            </div>
+                                        </div>
+                                        <div class="product-settings">
+                                            <div class="product-sum-wrap">
+                                                <div class="h2">
+                                                    <span class="sum">{{ item.price }} </span> руб.
+                                                </div>
+                                                <input class="product-sum" type="hidden" name="product_counter" value="{{ item.price }}">
+                                            </div>
+                                        </div>
+                                        <div class="delete-wrap">
+                                            <button class="product-delete" data-remove="true" data-position="{{ item.id }}">
+                                                <object class="svg-icon" type="image/svg+xml" data="{{ 'assets/img/svg/icon/trash.svg'|theme }}"></object>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="products-sum">
+                            <div class="sum-wrap">
+                                <div class="sum-title">Итого к оплате: <span class="sum">{{ sum }}</span> руб.</div>
+                                <input class="total-sum" type="hidden" name="total_sum" value="{{ sum }}">
+                                <button type="button" class="go-to-payment button-border" data-bs-toggle="modal" data-bs-target="#order-modal">Перейти к оплате</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-empty" {% if cart_data|length == 0 %}style="display: block"{% else %}style="display: none"{% endif %}>
+                        <div class="cart-empty-wrap">
+                            <div class="cart-empty-message">
+                                <div class="h2 title"> В данный момент в вашей корзине пусто...</div>
+                                <div class="subtitle">
+                                    Перейдите в раздел “Магазин” и добавьте понравившиеся вам товары!
+                                </div>
+                                <a href="{{ 'store/listing'|page }}" class="go-to-store button-border">Перейти в магазин</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% put basket_in_main %}
+    <div id="basketWrap">
+        {% partial 'block/basket/basket' %}
+    </div>
+{% endput %}
+{% placeholder listing_back_button %}

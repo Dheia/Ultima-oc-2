@@ -1,0 +1,48 @@
+<section class="hero-section">
+    <div class="desctop">
+        <div class="row">
+            <div class="{% if hero_data.imageSrc is not empty %}col-xl-3 col-lg-4 col-md-5 col-sm-6{% else %}col-12{% endif %}" {% if hero_data.name is empty and hero_data.description is empty and hero_data.additional_title is empty and hero_data.additional_description is empty %}style="display: none;"{% endif %}>
+                <div class="left-section-wrap">
+                    <div class="hero-title-block">
+                        <h1 class="h2 hero-title">{{ hero_data.name }}</h1>
+                        <p>{{ hero_data.description|raw }}</p>
+                    </div>
+                    <div class="participant-container">
+                        <div class="participant-item">
+                            <span class="participant-name">{{ hero_data.additional_title }}</span>
+                            <p>{{ hero_data.additional_description|raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if hero_data.imageSrc is not empty %}
+            <div class="{% if hero_data.name is empty and hero_data.description is empty and hero_data.additional_title is empty and hero_data.additional_description is empty %}col-12{% else %}col-xl-9 col-lg-8 col-md-7 col-sm-6 {% endif %}">
+                <a href="{{ hero_data.imageSrc|media }}" data-fslightbox="{{ random() }}">
+                    <picture class="hero-image-wrap">
+                        <img class="hero-image" src="{{ hero_data.imageSrc|media }}" alt="">
+                    </picture>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="mobile">
+        <div class="hero-title-block">
+            <h1 class="hero-title">{{ hero_data.name }}</h1>
+            <p>{{ hero_data.description|raw }}</p>
+        </div>
+        {% if hero_data.imageSrc %}
+        <a href="{{ hero_data.imageSrc|media }}" data-fslightbox="{{ random() }}">
+            <picture class="hero-image-wrap">
+                <img class="hero-image" src="{{ hero_data.imageSrc|media }}" alt="">
+            </picture>
+        </a>
+        {% endif %}
+        <div class="participant-container">
+            <div class="participant-item">
+                <span class="participant-name">{{ hero_data.additional_title }}</span>
+                <p>{{ hero_data.additional_description|raw }}</p>
+            </div>
+        </div>
+    </div>
+</section>

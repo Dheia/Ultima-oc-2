@@ -1,0 +1,34 @@
+@import "../build/scss/variables";
+// @import '../node_modules/animate.css/animate.min.css';
+@import '../node_modules/animate.css/source/fading_entrances/fadeIn.css';
+@import '../node_modules/animate.css/source/fading_entrances/fadeInDown.css';
+@import '../node_modules/animate.css/source/fading_entrances/fadeInRight.css';
+@import '~animate.css';
+
+
+/* Section */
+
+@import '../partials/section/first-screen/first-screen';
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.header-logo {
+    opacity: 0;
+}
+
+
+@media (max-width: 1199px) {
+    .header-logo {
+        top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .header-logo {
+        display: none!important;
+    }
+} 

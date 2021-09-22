@@ -1,0 +1,7 @@
+1.0.1: First version of Ultima
+1.0.2:
+    - Create Portfolio table
+    - create_portfolios_table.php
+1.0.3:
+    - Sortable
+    - add_sortable_portfolios_table.php

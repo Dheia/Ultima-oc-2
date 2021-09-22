@@ -1,0 +1,45 @@
+<header class="main-header {% placeholder header_class %}">
+    <div class="header-wrapper">
+        <div class="header-menu">
+            <button class="btn icon open-aside-menu">
+                <object width="36px" height="36px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/call.svg'|theme }}"></object>
+            </button>
+            <div class="group-links">
+                {% if this.theme.contacts.behance is not empty %}
+                <a href="{{ this.theme.contacts.behance }}" class="link icon">
+                    <object class="svg-icon be-icon" width="26px" height="16px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/behance.svg'|theme }}"></object>
+                </a>
+                {% endif %}
+                {% if this.theme.contacts.instagram is not empty %}
+                <a href="{{ this.theme.contacts.instagram }}" class="link icon">
+                    <object class="svg-icon instagram-icon" width="24px" height="24px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/instagram.svg'|theme }}"></object>
+                </a>
+                {% endif %}
+                {% placeholder header_back_button %}
+            </div>
+        </div>
+        <div class="header-logo">
+            <a href="/">
+                <picture>
+                    <img src="{{ 'assets/img/svg/logo-small.svg'|theme }}" alt="Ultimaterra">
+                </picture>
+            </a>
+        </div>
+        <div class="header-brief-button">
+            <a href="#" class="button-border brief-button">Заполнить бриф</a>
+        </div>
+        <div class="site-lang">
+            {{ form_ajax('onSwitchLocale') }}
+            {% for code, name in locales %}
+                <button class="btn-lang" data-button="lang" lang-code="{{ code }}">{{ name }}</button>
+            {% endfor %}
+                {#<select name="locale" data-request="onSwitchLocale" class="form-control">
+                    {% for code, name in locales %}
+                        <option value="{{ code }}" {{ code == activeLocale ? 'selected' }}>{{ name }}</option>
+                    {% endfor %}
+                </select>#}
+            {{ form_close() }}
+        </div>
+    </div>
+    {% placeholder header_logo %}
+</header>

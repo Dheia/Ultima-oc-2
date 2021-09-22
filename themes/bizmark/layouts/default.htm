@@ -1,0 +1,74 @@
+description = "Динамический шаблон"
+
+[SeoToolbox]
+
+[emptyForm feedbackForm]
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+messages_partial = "forms/alert"
+mail_enabled = 1
+mail_subject = "Обратная связь с сайта UltimaTerra"
+mail_recipients[] = "domain@test.ltd"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[alternateHrefLangElements]
+
+[localePicker]
+forceUrl = 1
+
+[Agent]
+==
+<?php
+function onStart() {
+    $this['vendor_style'] = mix('css/vendor.css', 'themes/bizmark/assets');
+    $this['layout_style'] = mix('css/common.css', 'themes/bizmark/assets');
+    $this['layout_script'] = mix('js/common.js', 'themes/bizmark/assets');
+}
+?>
+==
+<!doctype html>
+<html lang="ru">
+<head>
+    {{ SeoToolbox.getHeadBegin()|raw }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% component 'alternateHrefLangElements' %}
+    {% placeholder seo_tags default %}
+        {% component 'SeoToolbox' %}
+    {% endplaceholder %}
+    <link rel="stylesheet" href="{{ vendor_style }}">
+    <link rel="stylesheet" href="{{ layout_style }}">
+    {% placeholder page_style %}
+    {{ SeoToolbox.getHeadEnd()|raw }}
+</head>
+<body>
+    {{ SeoToolbox.getBodyBegin()|raw }}
+    <div class="page-wrapper {% placeholder page_wrapper_class %}">
+        {% partial 'block/aside-menu/aside-menu' %}
+        <div class="container-fluid">
+            <div class="panel">
+                {% partial 'header/header' %}
+                <main class="{% placeholder main_class %}">
+                    {% page %}
+                    {% placeholder basket_in_main %}
+                </main>
+                {% placeholder footer %}
+            </div>
+        </div>
+    </div>
+    {% partial 'block/background/background' %}
+    {% placeholder background_color_block %}
+    {% placeholder page_modals %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="{{ layout_script }}"></script>
+    {% placeholder page_script %}
+    {{ SeoToolbox.getBodyEnd()|raw }}
+</body>
+</html>

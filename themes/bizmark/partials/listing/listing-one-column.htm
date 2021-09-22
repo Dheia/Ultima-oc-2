@@ -1,0 +1,27 @@
+
+<section class="listing-section tablet">
+    <div class="type-two">
+        {% for index, item in slider_data %}
+        {% set index = index + 1 %}
+        <div class="listing-card">
+            <div class="card-content">
+                <a href="{{ item.url }}">
+                    <div class="top-card">
+                        <div class="card-count h2">{{ index >= 10 ? index : '0' ~ index }}</div>
+                        <img class="card-image" src="{{ item.imgSrc }}" alt="">
+                    </div>
+                </a>
+                <div class="bottom-card">
+                    <div>
+                        <div class="card-title h2">{{ item.title }}</div>
+                        <div class="card-description">{{ item.description }}</div>
+                    </div>
+                    <a href="{{ item.url }}">
+                        <div class="more-details">подробнее</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

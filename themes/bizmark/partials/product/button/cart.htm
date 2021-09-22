@@ -1,0 +1,5 @@
+{% if obCart.hasOffer(obOffer.id) %}
+    <a href="{{ 'store/cart'|page }}" class="btn-cart-link btn-cart button-border">{{'Перейти в корзину'|_}}</a>
+{% else %}
+    <button data-cart="true" class="btn-cart button-border">{{'Добавить в корзину'|_}}</button>
+{% endif %}

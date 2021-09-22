@@ -1,0 +1,78 @@
+<div class="aside-menu" style="visibility: hidden;">
+    <div class="header-menu">
+        <button class="close-aside-menu icon">
+            <!-- <object width="36px" height="36px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/call.svg'|theme }}"></object> -->
+        </button>
+        <div class="link-group">
+            <a href="#" class="link icon">
+                <object class="svg-icon" width="26px" height="16px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/behance.svg'|theme }}"></object>
+            </a>
+            <a href="#" class="link icon">
+                <object class="svg-icon" width="24px" height="24px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/instagram.svg'|theme }}"></object>
+            </a>
+        </div>
+        <div class="aside-menu-logo">
+            <object class="svg-icon" width="93px" height="24px" type="image/svg+xml" data="{{ 'assets/img/svg/logo-small.svg'|theme }}"></object>
+        </div>
+    </div>
+    <form data-request="feedbackForm::onFormSubmit" data-request-success="document.location.href = '/success'">
+        {{ form_token() }}
+        <div id="feedbackForm_forms_flash">
+            <div class="form-title title">{{'Оставить заявку для связи:'|_}}</div>
+            <div class="input-group">
+                <input type="text" name="Телефон" required id="feedback_phone" aria-label="+7 (" data-phone="true" placeholder="+7 (___) ___-__-__" class="form-control">
+                <input type="text" name="Имя" required id="feedback_name" aria-label="{{ 'Как к вам обращаться?'|_ }}" placeholder="{{ 'Как к вам обращаться?'|_ }}" class="form-control">
+                <input type="text" name="Время" required id="feedback_time" aria-label="{{ 'В какое время удобно?'|_ }}" placeholder="{{ 'В какое время удобно?'|_ }}" class="form-control">
+            </div>
+            <button type="submit" class="button-border">{{'Оставить заявку'|_}}</button>
+        </div>
+    </form>
+    <div class="contacts">
+        <div class="links-title title">{{'Связаться:'|_}}</div>
+        <div class="links-group">
+            {% if this.theme.contacts.telegram is not empty %}
+            <a class="telegram phone-link button-border" href="{{ this.theme.contacts.telegram }}">
+                <span class="icon">
+                    <object class="svg-icon" width="26px" height="16px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/telegram.svg'|theme }}"></object>
+                </span>
+                {{'В Telegram'|_}}
+            </a>
+            {% endif %}
+            {% if this.theme.contacts.whatsapp %}
+            <a class="whatsapp phone-link button-border" href="{{ this.theme.contacts.whatsapp }}">
+                <span class="icon">
+                    <object class="svg-icon" width="26px" height="16px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/whatsapp.svg'|theme }}"></object>
+                </span>
+                {{'В WhatsApp'|_}}
+            </a>
+            {% endif %}
+            {% if this.theme.contacts.phone is not empty %}
+            <div class="phone phone-link button-border phone-btn">
+                <span class="icon">
+                    <object class="svg-icon" width="26px" height="16px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/phone.svg'|theme }}"></object>
+                </span>
+                <div class="preview">{{'Телефон'|_}}</div>
+                <a href="tel:{{ this.theme.contacts.phone }}" class="view" style="display: none;">{{ this.theme.contacts.phone }}</a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="contacts-wrap">
+            {% if this.theme.contacts.address %}<div class="address contact">{{ this.theme.contacts.address }}</div>{% endif %}
+            {% if this.theme.contacts.email %}<a class="email contact" href="mailto:{{ this.theme.contacts.email }}">{{ this.theme.contacts.email }}</a>{% endif %}
+        </div>
+        <div class="bottom-buttons-wrap">
+            <a class="button-border" href="{{ this.theme.contacts.behance }}">
+                <picture>
+                    <img src="{{ 'assets/img/svg/icon/white-be.svg'|theme }}">
+                </picture>
+                Behance
+            </a>
+            <a class="button-border" href="{{ this.theme.contacts.instagram }}">
+                <picture>
+                    <img src="{{ 'assets/img/svg/icon/white-instagram.svg'|theme }}">
+                </picture>
+                Instagram
+            </a>
+        </div>
+    </div>
+</div>

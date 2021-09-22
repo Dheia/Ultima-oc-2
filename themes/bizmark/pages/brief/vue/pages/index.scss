@@ -1,0 +1,19 @@
+.education {
+    .education-wrap {
+        padding-top: 130px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        .education-title {
+            margin-bottom: 20px;
+            bottom: calc(50% - 60px);
+        }
+    }
+    .education-mousemove {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: calc(50% - 60px);
+        text-align: center;
+    }
+}

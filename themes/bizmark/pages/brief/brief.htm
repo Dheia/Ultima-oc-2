@@ -1,0 +1,22 @@
+url = "/brief"
+layout = "brief"
+title = "Бриф"
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/brief.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/brief.js', 'themes/bizmark/assets');
+}
+?>
+==
+
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+
+<div id="app">
+    {{ message }}
+</div>

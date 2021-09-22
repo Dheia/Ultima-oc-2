@@ -1,0 +1,39 @@
+<div class="mobile-padding splide">
+    <div class="splide__track">
+        <ul class="splide__list">
+            {% for item in slider_data %}
+                <li class="splide__slide">
+                    <div class="slide-wrap">
+                        {% if item.path %}
+                        <a href="">
+                    {% endif %}
+                        {% if slider_type == 'recommendation' %}
+                            <div class="recommend-card">
+                                <div class="image" style="background-image: url({{ item.imgSrc ? item.imgSrc : item.image|media }});"></div>
+                                <div class="card-body">
+                                    <div class="title">{{ item.title }}</div>
+                                    <div class="description">{{ item.description }}</div>
+                                </div>
+                                <div class="hidden-content" style="background-image: url({{ item.imgSrc ? item.imgSrc : item.image|media }});"></div>
+                            </div>
+                        {% elseif slider_type == 'team' %}
+                            <div class="teammate-card">
+
+                                <div class="teammate-photo" style="background-image: url({{ item.imgSrc ? item.imgSrc : item.image|media }});"></div>
+                                <div class="hidden-cotnent">
+                                    <div class="hidden-cotnent-wrapper">
+                                        <div class="h2 title">{{ item.title }}</div>
+                                        <div class="description">{{ item.description }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% if item.path %}
+                        </a>
+                    {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

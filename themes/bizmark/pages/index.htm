@@ -1,0 +1,28 @@
+url = "/"
+layout = "default"
+title = "Главная страница"
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/index.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/index.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script>
+        let solarSystemPath = "{{ 'assets/json/solar-system.json'|theme }}" 
+    </script>
+    <script src="{{ page_script }}"></script>
+{% endput %}
+{#{% put header_logo %}
+<div class="header-logo">
+    <div class="header-logo-warpper">
+        <object class="logo" width="156px" height="34px" type="image/svg+xml" data="{{ 'assets/img/svg/logo-small.svg'|theme }}"></object>
+    </div>
+</div>
+{% endput %}#}
+{% partial 'section/first-screen/first-screen' %}

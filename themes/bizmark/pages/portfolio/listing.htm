@@ -1,0 +1,66 @@
+url = "/portfolio"
+layout = "default"
+title = "Портфолио"
+
+[PortfolioList]
+items = 10
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/portfolio-listing.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/portfolio-listing.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+
+{% put listing_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+{% put header_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+
+{% put footer %}
+    {% partial 'footer/footer' %}
+{% endput %}
+
+
+{% set slider_data = [] %}
+{% set projects = PortfolioList.projects %}
+{% for project in projects %}
+    {% set slider_data = slider_data|merge([{
+        url: 'portfolio/listing'|page ~ '/' ~ project.slug,
+        imgSrc: project.preview_image.path,
+        title: project.name,
+        description: project.preview_description
+    }]) %}
+{% endfor %}
+
+{% partial 'listing/listing' 
+    slider_data = slider_data
+    page_title = "Портфолио"
+    render_type = 'two-column'
+    phone_slider = true
+%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

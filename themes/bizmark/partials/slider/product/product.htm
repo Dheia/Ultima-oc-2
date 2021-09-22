@@ -1,0 +1,26 @@
+<div class="splide product-slider">
+
+    <div class="splide__arrows" {% if slider_data|length <= 1 %}style="display: none;"{% endif %}>
+        <button class="splide__arrow splide__arrow--prev">
+            <picture>
+                <img src="{{ 'assets/img/svg/arrow-left-new.svg'|theme }}">
+            </picture>
+        </button>
+        <button class="splide__arrow splide__arrow--next">
+            <picture>
+                <img src="{{ 'assets/img/svg/arrow-right-new.svg'|theme }}">
+            </picture>
+        </button>
+    </div>
+    <div class="splide__track">
+        <ul class="splide__list">
+            {% for slide in slider_data %}
+            <li class="splide__slide">
+                <div class="slide-wrap">
+                    <div class="slide-img" style="background-image: url({{ slide.src }});"></div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

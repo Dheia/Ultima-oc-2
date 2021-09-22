@@ -1,0 +1,77 @@
+{% set obPropertyList = obProduct.property %}
+<section class="card-section">
+    <div class="card-grid">
+        <div class="product-name-cell">
+            <div class="page-name">
+                <object width="33px" height="42px" class="logo-star" type="image/svg+xml" data="{{ 'assets/img/svg/logo-star.svg'|theme }}"></object>
+                <h1>{{ obProduct.name }}</h1>
+            </div>
+        </div>
+        <div class="description-cell">
+            <div class="description">
+                <p>
+                    {{ obProduct.preview_text|length > 130 ? obProduct.preview_text|slice(0, 130) : obProduct.preview_text|raw }}
+                </p>
+            </div>
+            <div id="priceWrap" class="price h2">
+                {% partial 'product/price/price' %}
+            </div>
+        </div>
+        <div class="settings-cell">
+            <div class="settings">
+                {% if obPropertyList.isNotEmpty() and obProduct.related is not empty %}
+                <div class="settings-item">
+                    <div class="settings-title">{{'Выберите цвет:'|_}}</div>
+                    <div class="row colors">
+                        {% if obPropertyList.isNotEmpty() %}
+                            {% for obProperty in obPropertyList if obProperty.hasValue() and obProperty.code == 'color' %}
+                                <div class="col-4">
+                                    <span class="color button-border active" style="background-color: {{ obProperty.property_value.getValueString() }};"></span>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        {% for related_item in obProduct.related %}
+                            {% set obRelatedPropertyList = related_item.property %}
+                            {% if obRelatedPropertyList.isNotEmpty() %}
+                                {% for obRelatedProperty in obRelatedPropertyList if obRelatedProperty.hasValue() and obRelatedProperty.code == 'color' %}
+                                    <div class="col-4">
+                                        <a href="{{ related_item.getPageUrl('store/category') }}" class="color button-border" style="background-color: {{ obRelatedProperty.property_value.getValueString() }};"></a>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="settings-item">
+                    <div class="settings-title">{{'Выберите размер:'|_}}</div>
+                    <div class="row">
+                        {% for offer_item in obProduct.offer %}
+                            <div class="col-6">
+                                <div class="radio-group">
+                                    <input class="custom-input" id="size-{{ offer_item.id }}" type="radio" name="size" value="{{ offer_item.id }}" {{ loop.first ? 'checked' : '' }}>
+                                    <label class="custom-label button-border" for="size-{{ offer_item.id }}">{{ offer_item.name }}</label>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="cartWrap">
+                {% partial 'product/button/cart' %}
+            </div>
+        </div>
+        <div class="slider-cell">
+            {% set slider_data = [{
+                src: obProduct.preview_image.path
+            }] %}
+            {% for image in obProduct.images %}
+                {% set slider_data = slider_data|merge([{
+                    src: image.path
+                }]) %}
+            {% endfor %}
+            {% partial 'slider/product/product' slider_data=slider_data %}
+        </div>
+    </div>
+</section>
+{% placeholder listing_back_button %}

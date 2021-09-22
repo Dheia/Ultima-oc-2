@@ -1,0 +1,96 @@
+title = "О нас"
+url = "/about"
+layout = "default"
+==
+function onStart() {
+    $this['page_style'] = mix('css/about.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/about.js', 'themes/bizmark/assets');
+}
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+
+{% put header_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+{% put footer_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+
+
+{% put background_color_block %}
+    <div class="background-color-block"></div>
+{% endput %}
+
+
+{#{% set footer_links = [
+    { name: 'наши проекты', url: 'portfolio/listing' },
+    { name: 'заполнить бриф', url: '#' },
+    { name: 'магазин', url: 'store/listing' }
+] %}#}
+
+{% put footer %}
+    {% partial 'footer/footer' %}
+{% endput %}
+
+{% set arSlides = [] %}
+{% for slide in this.theme.about.slider_block.slides %}
+    {% set arSlides = arSlides|merge([
+        slide.image|media
+    ]) %}
+{% endfor %}
+{% set slider_data = {
+    title: this.theme.about.slider_block.title,
+    description: this.theme.about.slider_block.description,
+    position: 'left',
+    controls_color: this.theme.about.slider_block.controls_color ? this.theme.about.slider_block.controls_color : '#000',
+    slides: arSlides
+} %}
+{% partial 'slider/default/default' slider_data=slider_data %}
+
+<section class="team-section">
+    <div class="team-container">
+        {% for item in this.theme.about.teams %}
+        <div class="team-item {{ item.slider|length < 3 ? 'items-smaller-3' : item.slider|length == 3 ? 'items-3' : 'items-more-3' }}">
+            <div class="desctop">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-12 left-section">
+                        <div class="teamleader">
+                            <div class="h1 title">{{ item.title }}</div>
+                            <div class="description">
+                                {{ item.description|raw }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-12 right-section">
+                        <div class="desctop">
+                            <div class="row">
+                                {% for slide in item.slider %}
+                                <div class="col-md-4 col-sm-6 teammate-col">
+                                    <div class="teammate-card">
+                                        <div class="teammate-photo" style="background-image: url({{ slide.image|media }});"></div>
+                                        <div class="hidden-cotnent">
+                                            <div class="hidden-cotnent-wrapper">
+                                                <div class="h2 title">{{ slide.title }}</div>
+                                                <div class="description">{{ slide.description }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="mobile">
+                            {% partial 'slider/mobile-padding/mobile-padding' slider_type='team' slider_data=item.slider %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

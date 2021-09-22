@@ -1,0 +1,44 @@
+<section class="fonts-section">
+    <div class="h2 section-title">{{'Шрифты'|_}}</div>
+    <div class="fonts-container">
+        {% for slider in fonts_data %}
+            {% put page_style %}
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ slider.font_famaily }}">
+            {% endput %}
+        <div class="font-slider" style="font-family: '{{ slider.font_famaily }}'">
+            <div class="left-section">
+                <div class="font-name">{{ slider.font_famaily }}</div>
+                <ul class="slider-pagination">
+                    {% for index, item in slider.weight %}
+                    <li class="pagination-item">
+                        <button style="font-weight: {{ item.weight }};" data-slide="{{ index }}">{{ item.name }}</button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="right-section">
+                <div class="splide slider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            {% for item in slider.weight %}
+                            <li class="splide__slide" style="font-weight: {{ item.weight }};">
+                                <div class="slide-wrap">
+                                    <div class="alphabet">
+                                        <span class="alphabet-letters">
+                                            Аа Бб Вв Гг Дд Ее Ёё Жж Зз Ии Йй Кк
+                                            Лл Мм Нн Оо Пп Рр Сс Тт Уу Фф Хх
+                                            Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ Юю Яя
+                                        </span>
+                                        <span class="big-letter">Aa</span>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

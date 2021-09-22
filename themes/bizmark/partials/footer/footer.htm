@@ -1,0 +1,70 @@
+<footer>
+    <div class="top-footer">
+        <span class="footer-title">На орбите современного дизайна</span>
+        <a class="btn button-border brief-link" href="#">Заполнить бриф</a>
+    </div>
+    <div class="footer-wrap">
+        <div class="row">
+            <div class="col-lg-4 col-sm-5 col-6">
+                <div class="logo-section">
+                    <a class="logo" href="/">
+                        <picture>
+                            {% if Agent.isPhone() != true %}
+                                <img class="desctop-logo" src="{{ 'assets/img/svg/footer-logo.svg'|theme }}" alt="ultimaterra branding studio">
+                            {% else %}
+                                <img src="{{ 'assets/img/svg/logo.svg'|theme }}" alt="ultimaterra branding studio">
+                            {% endif %}
+                        </picture>
+                    </a>
+                    <div>
+                        <span class="logo-description">© 2021 | Все права защищены</span>
+                        <span class="logo-description">ОГРН: 321169000044122</span>
+                        <span class="logo-description">ИНН: 165925005420</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-6">
+                <div class="footer-cell">
+                    <span class="cell-title">МЕНЮ:</span>
+                    <nav class="footer-nav">
+                        <ul class="nav-list">
+                            <li class="nav-item">
+                                <a class="cell-item footer-link nav-link" href="/">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="cell-item footer-link nav-link" href="{{ 'portfolio/listing'|page }}">Наши проекты</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="cell-item footer-link nav-link" href="#">Новости и события</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="cell-item footer-link nav-link" href="{{ 'about/about'|page }}">Наша команда</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="cell-item footer-link nav-link" href="{{ 'store/listing'|page }}">Магазин</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-5 col-sm-4 col-12">
+                <div class="footer-cell contacts-cell">
+                    <span class="cell-title">КОНТАКТЫ:</span>
+                    <div class="contacts">
+                        <span class="cell-item">Тукая 72, 7 офис, 3 эт.</span>
+                        <a class="footer-link cell-item" href="tel:+7 (986) 718 24 41">+7 (986) 718 24 41</a>
+                        <div class="sotial-links">
+                            <a class="sotial-link" href="{{ this.theme.contacts.behance }}">
+                                <object class="svg-icon be-icon" width="26px" height="16px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/behance.svg'|theme }}"></object>
+                            </a>
+                            <a class="sotial-link" href="{{ this.theme.contacts.instagram }}">
+                                <object class="svg-icon instagram-icon" width="24px" height="24px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/instagram.svg'|theme }}"></object>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% placeholder footer_back_button %}
+</footer>

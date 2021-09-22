@@ -1,0 +1,30 @@
+<div class="listing-slider-wrapper">
+    <div class="listing-slider">
+        {% for index, slide in slider_data %}
+        {% set index = index + 1 %}
+        <div class="slide-item">
+            <div class="listing-card slider-card">
+                <a href="{{ slide.url }}">
+                    <div class="card-content">
+                        <div class="top-card">
+                            <div class="card-count h2">{{ index >= 10 ? index : '0' ~ index }}</div>
+                            <img class="card-image" src="{{ slide.imgSrc }}" alt="">
+                        </div>
+                        <div class="bottom-card">
+                            <div>
+                                <div class="card-title h2">{{ slide.title }}</div>
+                                <div class="card-description">{{ slide.description }}</div>
+                            </div>
+                            <div class="more-details">подробнее</div>
+                        </div>
+                    </div>
+                    <div class="hidden-content">
+                        <div class="card-count h2">{{ index >= 10 ? index : '0' ~ index }}</div>
+                        <img class="card-image full-image" src="{{ slide.imgSrc }}" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

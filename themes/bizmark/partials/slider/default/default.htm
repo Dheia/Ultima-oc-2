@@ -1,0 +1,48 @@
+<section class="slider-section default-slider {% if slider_data.slides|length < 1 %}full-width-block-text{% endif %} {% if slider_data.title is same as('') and slider_data.title is same as('') %}default-slider-full-width{% endif %} {% if slider_data.position == 'left' %}to-left{% elseif slider_data.position == 'right' %}to-right{% else %}to-left{% endif %}">
+    <div class="content-section {% if slider_data.slides|length < 1 %}full-width-block{% endif %}" {% if slider_data.title is same as('') and slider_data.title is same as('') %}style="display: none;"{% endif %}>
+        <div class="content-section-wrap">
+            <div class="title h2">{{ slider_data.title }}</div>
+            <div class="description">
+                <p>{{ slider_data.description|raw }}</p>
+            </div>
+        </div>
+        <ul class="slider-pagination" {% if slider_data.slides|length <= 1 %}style="display: none;"{% endif %}>
+            {% for item in 1..slider_data.slides|length  %}
+            <li class="pagination-item">
+                <button class="pagination-button" data-slide="{{ item - 1 }}">{{ item }}</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if slider_data.slides|length >= 1 %}
+    <div class="slider-wrap">
+        <div class="splide slider">
+            <div class="splide__arrows" {% if slider_data.slides|length <= 1 %}style="display: none;"{% endif %}>
+                <button class="splide__arrow splide__arrow--prev">
+                    <picture>
+                        <img src="{{ 'assets/img/svg/arrow-left-new.svg'|theme }}">
+                    </picture>
+                </button>
+                <button class="splide__arrow splide__arrow--next">
+                    <picture>
+                        <img src="{{ 'assets/img/svg/arrow-right-new.svg'|theme }}">
+                    </picture>
+                </button>
+            </div>
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for item in slider_data.slides %}
+                    <li class="splide__slide">
+                        <a href="{{ item }}" data-fslightbox="{{ random() }}">
+                            <picture>
+                                <img class="slide-image" src="{{ item }}" alt="">
+                            </picture>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</section>

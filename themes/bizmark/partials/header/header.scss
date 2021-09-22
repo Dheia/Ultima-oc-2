@@ -1,0 +1,144 @@
+.brief-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 246px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    background-color: #1769FF;
+    box-shadow: 0px 4px 35px -10px #1769FF;
+}
+
+header {
+    position: relative;
+    padding-top: 125px;
+    padding-bottom: 105px;
+    z-index: 2;
+    .header-wrapper {
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .header-logo {
+            position: absolute;
+            left: calc(50% - 156px / 2);
+        }
+        .header-brief-button {
+            position: absolute;
+            left: calc(50% - (145px / 2));
+            .brief-button {
+                font-size: 12px;
+                width: 145px;
+                height: 32px;
+            }
+        }
+        .header-menu, .site-lang {
+            position: relative;
+            z-index: 10;
+        }
+    }
+    .header-menu {
+        display: flex;
+        align-items: center;
+        .group-links {
+            display: flex;
+            align-items: center;
+        }
+        .icon {
+            display: flex;
+            margin-right: 15px;
+            .svg-icon {
+                opacity: 0.5;
+                transition: all .2s ease-in-out;
+            }
+            &:hover {
+                .svg-icon {
+                    opacity: 1;
+                }
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    .site-lang {
+        button {
+            text-decoration: underline;
+            font-size: 16px;
+            font-weight: 700;
+        }
+    }
+}
+header.header-fixed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+
+@media (min-width: 576px) {
+    .header-brief-button {
+        display: none;
+    }
+}
+
+
+@media (max-width: 1199px) {
+    header {
+        padding: 85px 0;
+    }
+    
+}
+
+@media (max-width: 767px) {
+    header {
+        padding: 50px 0;
+    }
+}
+
+@media (max-width: 575px) {
+    header {
+        padding: 25px 0;
+        .header-wrapper {
+            .header-logo {
+                display: none;
+            }
+        }
+        .header-menu {
+            display: flex;
+            justify-content: space-between;
+            order: 2;
+            .open-aside-menu {
+                order: 2;
+                margin-right: 0!important;
+                object {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+            .group-links {
+                display: none;
+                order: 1;
+                margin-left: -27px;
+                .instagram-icon {
+                    width: 18px;
+                    height: auto;
+                }
+                .be-icon {
+                    width: 19px;
+                    height: auto;
+                }
+            }
+        }
+        .site-lang {
+            order: 1;
+            button {
+                font-size: 12px;
+            }
+        }
+    }
+}

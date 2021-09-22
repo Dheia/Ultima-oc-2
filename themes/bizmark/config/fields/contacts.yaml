@@ -1,0 +1,22 @@
+fields:
+    email:
+        label: E-mail
+        span: left
+    phone:
+        label: Телефон
+        span: right
+    address:
+        label: Адрес
+        span: left
+    whatsapp:
+        label: Whatsapp
+        span: right
+    telegram:
+        label: Telegram
+        span: left
+    behance:
+        label: Behance
+        span: right
+    instagram:
+        label: Instagram
+        right: left

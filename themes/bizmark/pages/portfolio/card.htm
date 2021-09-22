@@ -1,0 +1,144 @@
+url = "/portfolio/:slug"
+layout = "default"
+title = "Карточка проекта"
+
+[PortfolioItem]
+slug = "{{ :slug }}"
+
+[PortfolioList]
+items = 8
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/portfolio-card.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/portfolio-card.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+
+{% put header_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+
+{% put footer_back_button %}
+    {% partial 'element/back-button/back-button' %}
+{% endput %}
+
+
+{#{% set footer_links = [
+    { name: 'наши проекты'|_, url: 'portfolio/listing' },
+    { name: 'заполнить бриф'|_, url: '#' },
+    { name: 'о нашей команде'|_, url: 'about/about' }
+] %}#}
+
+{% put footer %}
+    {% partial 'footer/footer' %}
+{% endput %}
+
+
+{% put background_color_block %}
+<div class="background-color-block"></div>
+{% endput %}
+
+
+{% for block in project.blocks %}
+    {% if block._group == 'hero' %}
+        {% set hero_data = {
+            name: block.title,
+            description: block.description|nl2br,
+            additional_title: block.additional_title,
+            additional_description: block.additional_description|raw,
+            imageSrc: block.hero_image
+        } %}
+        {% partial 'portfolio/hero' hero_data=hero_data %}
+    {% endif %}
+
+    {% if block._group == 'colors' %}
+        {% set colors_data = [] %}
+        {% for item in block.list %}
+            {% set colors_data = colors_data|merge([{
+                startHex: item.hex,
+                endHex: null,
+                font_color: item.hex_color ? item.hex_color : '#000',
+                rgb: item.rgb,
+                cmyk: item.cmyk
+            }]) %}
+        {% endfor %}
+        {% partial 'portfolio/colors' colors_data=colors_data %}
+    {% endif %}
+
+    {% if block._group == 'identity'%}
+        {% set arSlides = [] %}
+        {% for slide in block.slider %}
+            {% set arSlides = arSlides|merge([
+                slide.identity_images|media
+            ]) %}
+        {% endfor %}
+        {% set slider_data = {
+            title: block.title,
+            description: block.description|nl2br,
+            position: 'right',
+            controls_color: '#ffffff',
+            slides: arSlides
+        } %}
+        {% partial 'slider/default/default' slider_data=slider_data %}
+    {% endif %}
+
+    {% if block._group == 'fonts'%}
+        {% set fonts_data = [] %}
+        {% for item in block.list %}
+            {% set arSubfamilies = [] %}
+            {% for subfamily in item.subfamily %}
+                {% set arSubfamilies = arSubfamilies|merge([
+                    {
+                        name: subfamily.name,
+                        weight: subfamily.value
+                    }
+                ]) %}
+            {% endfor %}
+            {% set fonts_data = fonts_data|merge([{
+                font_famaily: item.family,
+                weight: arSubfamilies,
+            }]) %}
+        {% endfor %}
+        {% partial 'slider/font/font' fonts_data=fonts_data %}
+    {% endif %}
+
+    {% if block._group == 'website'%}
+        {% set arSlides = [] %}
+        {% for slide in block.slider %}
+            {% set arSlides = arSlides|merge([
+                slide.website_images|media
+            ]) %}
+        {% endfor %}
+        {% set slider_data = {
+            title: block.title,
+            description: block.description|nl2br,
+            position: 'left',
+            controls_color: '#000000',
+            slides: arSlides
+        } %}
+        {% partial 'slider/default/default' slider_data=slider_data %}
+    {% endif %}
+{% endfor %}
+
+{% set recommendation_data = [] %}
+{% set projects = PortfolioList.projects %}
+{% for project_recommend in projects %}
+    {% if project.id != project_recommend.id %}
+        {% set recommendation_data = recommendation_data|merge([{
+            title: project_recommend.name,
+            description: project_recommend.preview_description|nl2br,
+            path: 'portfolio/listing'|page ~ '/' ~ project_recommend.slug,
+            imgSrc: project_recommend.preview_image.path,
+        }]) %}
+    {% endif %}
+{% endfor %}
+{% partial 'portfolio/recommendation' recommendation_data=recommendation_data %}

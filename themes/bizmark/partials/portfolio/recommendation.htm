@@ -1,0 +1,20 @@
+<section class="recommendation-section">
+    <div class="h2 section-title">{{'Также стоит посмотреть:'|_}}</div>
+    <div class="row">
+        {% for item in recommendation_data %}
+        <div class="col-lg-3 col-sm-6 recommend-col">
+            <a href="{{ item.path }}">
+                <div class="recommend-card">
+                    <div class="image" style="background-image: url({{ item.imgSrc }});"></div>
+                    <div class="card-body">
+                        <div class="title">{{ item.title }}</div>
+                        <div class="description">{{ item.description }}</div>
+                    </div>
+                    <div class="hidden-content" style="background-image: url({{ item.imgSrc }});"></div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% partial 'slider/mobile-padding/mobile-padding' slider_type="recommendation" slider_data=recommendation_data %}
+</section>

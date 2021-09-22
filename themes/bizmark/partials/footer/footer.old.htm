@@ -1,0 +1,17 @@
+<footer>
+    <div class="logo-section">
+        <a class="logo" href="/#main-menu">
+            <object width="33px" height="42px" class="logo-star" type="image/svg+xml" data="{{ 'assets/img/svg/logo-star.svg'|theme }}"></object>
+            <div class="h1 logo-title">ultimaterra</div>
+        </a>
+    </div>
+    <div class="spacer">
+
+    </div>
+    <nav class="nav-section">
+        {% for link in links %}
+            <a class="h2" href="{{ link.url|page }}">{{ link.name }}</a>
+        {% endfor %}
+    </nav>
+    {% placeholder footer_back_button %}
+</footer>

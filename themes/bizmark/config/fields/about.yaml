@@ -1,0 +1,65 @@
+fields:
+    slider_block:
+        label: Блок со слайдером
+        span: full
+        type: nestedform
+        form:
+            fields:
+                title:
+                    label: Заголовок
+                    span: full
+                description:
+                    label: Описание
+                    span: full
+                    type: textarea
+                    size: tiny
+                controls_color:
+                    label: Цвет кнопок навигации слайдера
+                    span: full
+                    type: colorpicker
+                slides:
+                    label: Изображения в слайдер
+                    span: full
+                    type: repeater
+                    prompt: Добавить изображение
+                    form:
+                        fields:
+                            image:
+                                label: Изображение
+                                type: mediafinder
+                                span: full
+
+    teams:
+        label: Команды / группы
+        span: full
+        type: repeater
+        prompt: Добавить команду / группу
+        form:
+            fields:
+                title:
+                    label: Название команды
+                    span: full
+                description:
+                    label: Описание команды
+                    span: full
+                    type: textarea
+                    size: tiny
+                slider:
+                    label: Сотрудники в команде
+                    span: full
+                    type: repeater
+                    prompt: Добавить слайд
+                    form:
+                        fields:
+                            title:
+                                label: Заголовок (имя сотрудника)
+                                span: full
+                            description:
+                                label: Описание
+                                span: full
+                                type: textarea
+                                size: tiny
+                            image:
+                                label: Изображение сотрудника
+                                type: mediafinder
+                                span: full

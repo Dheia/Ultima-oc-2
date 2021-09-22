@@ -1,0 +1,33 @@
+
+<div class="d-none d-lg-block">
+    {% partial 'listing/listing-slider' slider_data=slider_data %}
+</div>
+<div class="d-none d-sm-block d-lg-none">
+    {% if render_type == 'two-column' %}
+        {% put page_wrapper_class %}
+            vertical-line
+        {% endput %}
+
+        {% partial 'listing/listing-two-column' slider_data=slider_data %}
+    {% else %}
+        {% put main_class %}
+            window-height
+        {% endput %}
+        {% partial 'listing/listing-one-column' slider_data=slider_data %}
+    {% endif %}
+</div>
+<div class="d-block d-sm-none" style="flex: 1;">
+    {% put main_class %}
+        window-height
+    {% endput %}
+    {% if phone_slider %}
+        {% put main_class %}
+            mobile-widow-height
+        {% endput %}
+        {% partial 'listing/listing-slider-mobile' slider_data=slider_data %}
+    {% else %}
+        {% partial 'listing/listing-one-column' slider_data=slider_data %}
+    {% endif %}
+</div>
+
+{% placeholder listing_back_button %}

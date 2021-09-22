@@ -1,0 +1,168 @@
+.fonts-section {
+    .h2 {
+        margin-bottom: 20px;
+    }
+    .font-name {
+        color: rgba($color: #fff, $alpha: .7);
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+    .font-slider {
+        margin-top: -80px;
+        margin-bottom: 100px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .splide__track {
+            overflow: visible;
+        }
+        .left-section {
+            width: 24%;
+            display: inline-block;
+        }
+        .right-section {
+            width: 75%;
+            display: inline-block;
+        }
+        .slide-wrap {
+            .alphabet {
+                margin-right: -35px;
+                .alphabet-letters {
+                    font-size: 18px;
+                    line-height: 2;
+                    letter-spacing: 3px;
+                    max-width: 420px;
+                }
+                .big-letter {
+                    line-height: 1;
+                    font-size: 300px;
+                    text-align: right;
+                    color: transparent;
+                    -webkit-text-stroke: 1px #fff;
+                    width: calc(99% - 420px);
+                }
+            }
+        }
+    }
+    .slider-pagination {
+        .pagination-item {
+            button {
+                font-size: 18px;
+                line-height: 2;
+                position: relative;
+                transition: all .2s ease-in-out;
+                opacity: .7;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: calc(-9px + -11px);
+                    width: 9px;
+                    height: 1px;
+                    background-color: #fff;
+                    transition: all 500ms ease-in-out;
+                    opacity: 0;
+                }
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+            }
+            
+        }
+        .pagination-item.active {
+            button {
+                opacity: 1;
+                &::before {
+                    transform: scaleX(1.33);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1300px) {
+    .fonts-section {
+        .font-slider {
+            .slide-wrap {
+                .alphabet {
+                    .alphabet-letters {
+                        display: none;
+                    }
+                    .big-letter {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    .fonts-section {
+        .slider-pagination {
+            .pagination-item.active button::before {
+                display: none;
+            }
+            .pagination-item:hover button::before {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .fonts-section {
+        .font-slider {
+            .left-section {
+                width: 30%;
+            }
+            .right-section {
+                width: 69%;
+            }
+            .slide-wrap {
+                .alphabet {
+                    margin-right: -70px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .fonts-section {
+        padding-bottom: 20px;
+        .font-name {
+            font-size: 14px;
+        }
+        .font-slider {
+            margin-top: 0;
+            margin-bottom: 40px;
+            .right-section {
+                width: 68%;
+            }
+            .slide-wrap {
+                .alphabet {
+                    margin-right: -30px;
+                    .alphabet-letters {
+                        display: none;
+                    }
+                    .big-letter {
+                        font-size: 160px;
+                    }
+                }
+            }
+        }
+        .slider-pagination {
+            .pagination-item {
+                button {
+                    font-size: 12px;
+                }
+            }
+        } 
+    }
+}

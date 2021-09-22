@@ -1,0 +1,131 @@
+<div class="section-scroller">
+    <div class="section first-section" anchor="first-screen">
+        <div class="section-wrapper hero-wrapper">
+            <div class="top-section animate__animated" animation-forward="animate__zoomOut" animation-back="animate__zoomIn" animation>
+                <object class="logo" width="169px" height="183px" type="image/svg+xml" data="{{ 'assets/img/svg/logo.svg'|theme }}"></object>
+                <div class="welcome">{{'Привет! Мы брендинг-студия Ultimaterra - студия с уникальным подходом к работе'|_}}</div>
+            </div>
+            <div class="bottom-section animate__animated" animation-forward="animate__fadeOutDown" animation-back="animate__fadeInUp" animation>
+                <object class="mouse" width="27px" height="42px" type="image/svg+xml" data="{{ 'assets/img/svg/icon/mouse.svg'|theme }}"></object>
+                <div>
+                    {% if Agent.isDesktop() %}
+                    {{'листай'|_}}
+                    {% else %}
+                    {{'cвайпай'|_}}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section second-section" anchor="main-menu">
+        <div class="section-wrapper main-menu-wrwapper">
+            <div class="content-section">
+                <div class="small-logo">
+                    <div class="small-logo-warpper animate__animated" animation-forward="animate__fadeInDown" animation-back="animate__fadeOutUp" animation>
+                        <object class="logo" width="156px" height="34px" type="image/svg+xml" data="{{ 'assets/img/svg/logo-small.svg'|theme }}"></object>
+                    </div>
+                </div>
+                <div class="row column-links">
+                    <div class="col-lg-3 column">
+                        <div class="column-wrapper animate__animated" animation-forward="animate__fadeInDown" animation-back="animate__fadeOutUp" animation>
+                            <a href="{{ 'portfolio/listing'|page }}">
+                                <div class="encrypted">
+                                    <div class="title">{{'Наши проекты'|_}}</div>
+                                    <div
+                                        class="description letter-spacing"
+                                        data-text="{{'Задача организации, в же выбранный нами путь предопределяет высокую востребованность развития.'|_}}"
+                                        data-secret-text="0 0 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 1"
+                                    >
+                                        0 0 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 1
+                                    </div>
+                                    <div
+                                        class="look-here letter-spacing"
+                                        data-text="Смотреть подробно"
+                                        data-secret-text="1 1 1 0 0 1 0 1 0 0 0 1 0 1 1"
+                                    >
+                                        1 1 1 0 0 1 0 1 0 0 0 1 0 1 1
+                                    </div>
+                                </div>    
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 column">
+                        <div class="column-wrapper animate__animated" animation-forward="animate__fadeInDown" animation-back="animate__fadeOutUp" animation>
+                            <a href="{{ ''|page }}">
+                                <div class="encrypted">
+                                    <div class="title">{{'Новости и события'|_}}</div>
+                                    <div
+                                        class="description letter-spacing"
+                                        data-text="{{'Разнообразный и богатый опыт говорит нам, что современная методология разработки.'|_}}"
+                                        data-secret-text="0 0 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 1"
+                                    >
+                                        0 0 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 1
+                                    </div>
+                                    <div
+                                        class="look-here letter-spacing"
+                                        data-text="Смотреть подробно"
+                                        data-secret-text="1 1 1 0 0 1 0 1 0 0 0 1 0 1 1"
+                                    >
+                                        1 1 1 0 0 1 0 1 0 0 0 1 0 1 1
+                                    </div>
+                                </div>      
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 column">
+                        <div class="column-wrapper animate__animated" animation-forward="animate__fadeInDown" animation-back="animate__fadeOutUp" animation>
+                            <a href="{{ 'about/about'|page }}">
+                                <div class="encrypted">
+                                    <div class="title">О нашей команде</div>
+                                    <div
+                                        class="description letter-spacing"
+                                        data-text="{{'В своём стремлении повысить качество жизни, они забывают, что начало повседневной работы.'|_}}"
+                                        data-secret-text="0 0 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 1"
+                                    >
+                                        0 0 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 1
+                                    </div>
+                                    <div
+                                        class="look-here letter-spacing"
+                                        data-text="Смотреть подробно"
+                                        data-secret-text="1 1 1 0 0 1 0 1 0 0 0 1 0 1 1"
+                                    >
+                                        1 1 1 0 0 1 0 1 0 0 0 1 0 1 1
+                                    </div>
+                                </div>      
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 column">
+                        <div class="column-wrapper animate__animated" animation-forward="animate__fadeInDown" animation-back="animate__fadeOutUp" animation>
+                            <a href="{{ 'store/listing'|page }}">
+                                <div class="encrypted">
+                                    <div class="title">Магазин</div>
+                                    <div
+                                        class="description letter-spacing"
+                                        data-text="{{'Таким образом, современная методология разработки не даёт нам иного выбора.'|_}}"
+                                        data-secret-text="0 0 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 1"
+                                    >
+                                        0 0 0 0 1 1 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 1
+                                    </div>
+                                    <div
+                                        class="look-here letter-spacing"
+                                        data-text="Смотреть подробно"
+                                        data-secret-text="1 1 1 0 0 1 0 1 0 0 0 1 0 1 1"
+                                    >
+                                        1 1 1 0 0 1 0 1 0 0 0 1 0 1 1
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if Agent.isMobile() == false %}
+                {% partial 'section/first-screen/solar-system/solar-system' %}
+            {% endif %}
+            <a href="#" class="button-border brief-button animate__animated" animation-forward="animate__fadeIn" animation-back="animate__fadeOut" animation>
+                Заполнить бриф
+            </a>
+        </div>
+    </div>
+</div>

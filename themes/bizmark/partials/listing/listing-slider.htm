@@ -1,0 +1,17 @@
+<section class="listing-section slider-section slider-section-desktop">
+    <div class="listing-section-wrap">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="left-section">
+                    <div class="layout-name">
+                        <object width="33px" height="42px" class="logo-star" type="image/svg+xml" data="{{ 'assets/img/svg/logo-star.svg'|theme }}"></object>
+                        <h1>{{ page_title }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                {% partial 'slider/listing/listing' slider_data=slider_data %}
+            </div>
+        </div>
+    </div>
+</section>
